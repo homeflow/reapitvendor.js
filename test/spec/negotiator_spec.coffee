@@ -1,0 +1,5 @@
+describe 'ReapitVendor.Models.Negotiator', ->
+  it "be able to parse a vendor packet", ->
+    xml = '<?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://webservice.reapit.com/"><SOAP-ENV:Body><ns1:GetNegotiatorResponse xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/"><Negotiator xsi:type="tns:Negotiator"><ID xsi:type="xsd:string">klrrps-SCG</ID><Name xsi:type="xsd:string">Sue Greenway</Name><Telephone xsi:type="xsd:string">0151 625 9300</Telephone><Email xsi:type="xsd:string">susan@karltatler.com</Email><Office xsi:type="tns:Office"><ID xsi:type="xsd:string">klrrps-WKS</ID></Office></Negotiator></ns1:GetNegotiatorResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>'
+    rv = ReapitVendor.Models.Negotiator.newFromXML(xml)
+    expect(rv.get('id')).to.equal 'klrrps-SCG'

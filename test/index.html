@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mocha Spec Runner</title>
+    <link rel="stylesheet" href="bower_components/mocha/mocha.css">
+</head>
+<body>
+    <div id="mocha"></div>
+    <script src="bower_components/mocha/mocha.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="bower_components/chai/chai.js"></script>
+    <script>
+        var assert = chai.assert;
+        var expect = chai.expect;
+        var should = chai.should();
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <!-- endbuild -->
+
+    <!-- include source files here... -->
+    <script src="/scripts/main.js"></script>
+
+    <script src="/scripts/models/vendor.js"></script>
+    <script src="/scripts/models/property.js"></script>=
+    <script src="/scripts/models/negotiator.js"></script>
+
+
+
+    <!-- include spec files here... -->
+    <script src="/spec/vendor_spec.js"></script>
+    <script src="/spec/property_spec.js"></script>
+    <script src="/spec/negotiator_spec.js"></script>
+
+
+    <script>mocha.run()</script>
+</body>
+</html>
