@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>ReapitVendor</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/main.css">
+        <script src="scripts/vendor/a8bcb0b6.modernizr.js"></script>
+    </head>
+    <body>
+        <script id="vendor_template" type="text/liquid">
+          test: {{vendor.address1}}
+        </script>
+
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="login">
+          <form>
+            <p><input type="text" id="property_id" value="" placeholder="Property id"></p>
+            <p><input type="password" id="password" value="" placeholder="Password"></p>
+            <p class="remember_me">
+            </p>
+            <p class="submit"><input type="submit" name="commit" value="Login"></p>
+          </form>
+        </div>
+
+        <div id="container">
+
+        </div>
+
+        <script src="scripts/8d5f6a3e.vendor.js"></script>
+
+        <script src="scripts/8db07988.plugins.js"></script>
+
+        <script src="scripts/1644861e.main.js"></script>
+
+        <script>
+          $(function() {
+
+            $( "#login form" ).submit(function( event ) {
+              window.reapit_vendor = ReapitVendor.init({
+                wsdl: 'http://karltatler.reapitcloud.com/webservice/index.php/',
+                property_id: $('#property_id').val(),
+                password: $('#password').val()
+              });
+
+              window.reapit_vendor.login().fail(function(){
+                alert('could not log you in');
+              }).done(function(){
+                $( "#login form" ).hide()
+                window.reapit_vendor.getVendorView().done(function(vendor_view) {
+                  vendor_view.setTemplate('#vendor_template');
+                  vendor_view.setElement('#container');
+                  return vendor_view.render();
+                });
+              })
+
+              event.preventDefault();
+            });
+
+          });
+        </script>
+</body>
+</html>
