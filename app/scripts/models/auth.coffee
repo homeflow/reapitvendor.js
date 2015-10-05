@@ -4,6 +4,9 @@ class Singleton
   @getInstance: ->
     @_instance ||= new ReapitVendor.Models.Auth(arguments...)
 
+  @clearInstance: ->
+    @_instance = null
+
 class ReapitVendor.Models.Auth extends Singleton
 
   constructor: (root_url, property_id, password) ->
@@ -73,6 +76,9 @@ class ReapitVendor.Models.Auth extends Singleton
           xml = $.parseXML(soapResponse.toString())
           @token = $(xml).find('AccessToken').text()
           loginRequest.resolve()
+        error: (SOAPResponse) =>
+          loginRequest.reject()
+
 
     return loginRequest.promise()
 

@@ -4,18 +4,16 @@ window.ReapitVendor =
   Views: {}
   Routers: {}
   init: (args) ->
-    console.log('init')
-    ReapitVendor.Models
-    @auth = ReapitVendor.Models.Auth.getInstance('http://localhost:4567/reapit/', args.property_id, args.password)
-    #@auth.vendor().done (vendor) ->
-    #  new ReapitVendor.Views.Vendor(model: vendor)
-    Backbone.history.start()
+    ReapitVendor.Models.Auth.clearInstance()
+    @auth = ReapitVendor.Models.Auth.getInstance(args.wsdl, args.property_id, args.password)
     @
 
+  login: ->
+    @auth.login()
 
   getVendorView: ->
     promise = new jQuery.Deferred()
-    @auth.vendor().done (vendor) =>
+    @auth.vendor().done ( vendor) =>
       @_vendor ||= new ReapitVendor.Views.Vendor(model: vendor)
       promise.resolve(@_vendor)
     return promise
@@ -38,13 +36,6 @@ window.ReapitVendor =
         @_office_views = offices
 
     return promise
-
-$ ->
-  window.reapit_vendor = ReapitVendor.init({property_id: 'guest', password: 'password'});
-  window.reapit_vendor.getVendorView().done (vendor_view) ->
-    vendor_view.setTemplate('#vendor_template')
-    vendor_view.setElement('#container')
-    vendor_view.render()
 
 
 class ReapitVendor.Template extends Backbone.View

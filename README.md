@@ -68,5 +68,5 @@ An initiated reapit vendor class has the following methods. Methods with a * are
 
 - getVendorView()
 - getOfficesView()
-- getNegotiatorView()
+- getNegotiatorView()*
 - getPropertyView()*
