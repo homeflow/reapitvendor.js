@@ -3,6 +3,7 @@ window.ReapitVendor =
   Collections: {}
   Views: {}
   Routers: {}
+  Template: {}
   init: (args) ->
     ReapitVendor.Models.Auth.clearInstance()
     @auth = ReapitVendor.Models.Auth.getInstance(args.wsdl, args.property_id, args.password)
@@ -36,7 +37,6 @@ window.ReapitVendor =
         @_office_views = offices
 
     return promise
-
 
 class ReapitVendor.Template extends Backbone.View
 
