@@ -14,6 +14,7 @@ class ReapitVendor.Models.Auth extends Singleton
     @property_id = property_id
     @password = password
     @token = ""
+    @session_id = ''
 
   isLoggedIn: ->
     @token != ""
@@ -38,8 +39,71 @@ class ReapitVendor.Models.Auth extends Singleton
     negotiatorRequest.promise()
 
 
+  marketingStats: ->
+    defferedRequest = new jQuery.Deferred()
+    @login().done =>
+      $.soap
+        url: @root_url
+        method: "GetMarketingStats"
+        SOAPHeader: {
+          'SessionID': @session_id
+        }
+        noPrefix: true
+        data: {
+          'ID': @property_id
+          'AccessToken': @token,
+        }
+        success: (soapResponse) =>
+          xml = soapResponse.toString()
+          defferedRequest.resolve ReapitVendor.Models.MarketingStats.newFromXML(xml)
+
+    defferedRequest.promise()
+
+
+  viewings: ->
+    defferedRequest = new jQuery.Deferred()
+    @login().done =>
+      $.soap
+        url: @root_url
+        method: "GetViewings"
+        SOAPHeader: {
+          'SessionID': @session_id
+        }
+        noPrefix: true
+        data: {
+          'ID': @property_id
+          'AccessToken': @token,
+        }
+        success: (soapResponse) =>
+          xml = soapResponse.toString()
+          defferedRequest.resolve ReapitVendor.Collections.Viewings.newFromXML(xml)
+
+    defferedRequest.promise()
+
+
+  offers: ->
+    defferedRequest = new jQuery.Deferred()
+    @login().done =>
+      $.soap
+        url: @root_url
+        method: "GetOffers"
+        SOAPHeader: {
+          'SessionID': @session_id
+        }
+        noPrefix: true
+        data: {
+          'ID': @property_id
+          'AccessToken': @token,
+        }
+        success: (soapResponse) =>
+          xml = soapResponse.toString()
+          ReapitVendor.Collections.Offers.newFromXML(xml).done (offers)->
+            defferedRequest.resolve(offers)
+    defferedRequest.promise()
+
+
+
   property: ->
-    console.log('property')
     propertyRequest = new jQuery.Deferred()
     @login().done =>
       $.soap
@@ -52,42 +116,70 @@ class ReapitVendor.Models.Auth extends Singleton
         }
         success: (soapResponse) =>
           xml = soapResponse.toString()
-          vendor =  ReapitVendor.Models.Property.newFromXML(xml)
-          propertyRequest.resolve(vendor)
+          ReapitVendor.Models.Property.newFromXML(xml).done (property) =>
+            propertyRequest.resolve(property)
 
     propertyRequest.promise()
 
 
 
   login:  ->
-    loginRequest = new jQuery.Deferred()
-    if @token != ""
-      loginRequest.resolve()
-    else
-      request = $.soap
-        url: @root_url
-        method: "VendorLogin"
-        noPrefix: true
-        data: {
-          'ID': @property_id,
-          'Password': @password
-        }
-        success: (soapResponse) =>
-          xml = $.parseXML(soapResponse.toString())
-          @token = $(xml).find('AccessToken').text()
-          loginRequest.resolve()
-        error: (SOAPResponse) =>
-          loginRequest.reject()
+    loginRequest = new jQuery.Deferred
+
+    @session().done =>
+      if @token != ""
+        loginRequest.resolve()
+      else
+        request = $.soap
+          url: @root_url
+          SOAPHeader: {
+            'SessionID': @session_id
+          }
+          method: "VendorLogin"
+          noPrefix: true
+          data: {
+            'ID': @property_id,
+            'Password': @password
+          }
+          success: (soapResponse) =>
+            xml = $.parseXML(soapResponse.toString())
+            response = $(xml).find('AccessToken').text()
+            @token = response
+            loginRequest.resolve()
+          error: (SOAPResponse) =>
+            loginRequest.reject()
 
 
     return loginRequest.promise()
 
+  session: ->
+    deffered = new jQuery.Deferred()
+    if @session_id != ''
+      deffered.resolve()
+      return deffered.promise()
+
+    request = $.soap
+      url: @root_url
+      method: "GetSessionID"
+      noPrefix: true
+      data : {}
+      success: (soapResponse) =>
+        xml = $.parseXML(soapResponse.toString())
+        @session_id = $(xml).find('ID').text()
+        deffered.resolve()
+      error: (SOAPResponse) =>
+        deffered.reject()
+
+    return deffered.promise()
 
   vendor: ->
     vendorRequest = new jQuery.Deferred()
     @login().done =>
       $.soap
         url: @root_url
+        SOAPHeader: {
+          'SessionID': @session_id
+        }
         method: "GetVendor"
         noPrefix: true
         data: {

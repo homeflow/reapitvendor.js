@@ -1,0 +1,364 @@
+
+
+
+
+
+
+
+
+
+
+/************************** 
+    ************************** 
+        ************************** 
+
+    PROPERTY TRACKER STYLES 
+
+        ************************** 
+    ************************** 
+*****************************/
+
+#tracker-body{
+    display: none;
+}
+
+.tracker-container input[type=submit]{
+    padding: 15px 45px;
+    background: #00499a;
+    border: none;
+    color: #e3c37b;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tracker-container input[type=text], .tracker-container input[type=password]{
+    padding: 10px;
+}
+
+.tracker-container h2{
+    color: #00499a;
+    font-size: 36px;
+    margin: 55px 0 30px 0;
+    font-family: "ProximaLight", Arial, Helvetica, sans-serif;
+}
+
+.tracker-container #tracker-intro{
+    margin-bottom: 50px;
+    display: -webkit-box;  
+    display: -ms-flexbox;  
+    display: -webkit-flex; 
+    display: flex;        
+}
+
+
+.tracker-container #tracker-intro h3{
+    margin: 30px 0 20px 3%;
+    color: #00499a;
+    font-size: 26px;
+    display: inline-block;
+    clear: both;
+    float: left;
+    width: 97%;
+}
+
+.tracker-container #tracker-intro .col-6 h4{
+     margin: 0 5% 25px 5%;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.tracker-container #tracker-intro .col-6{
+    width: 49%;
+    margin-right: 2%;
+    padding-bottom: 20px;
+       
+
+
+}
+
+
+.tracker-container #tracker-intro .col-6 img{
+
+    position: relative;
+    display: block;
+    margin: 0 auto 0 10%;
+    width: 90%;
+}
+
+.tracker-container #tracker-intro .col-6 p{
+    margin: 0 5%;
+    font-size: 18px;
+    float: left;
+    width: 90%;
+}
+
+.tracker-container #tracker-intro .col-6:last-child{
+    margin-right: 0;
+}
+
+.tracker-container #tracker-intro .col-6:last-child img{
+    width: 70%;
+    margin: 0 15% 0 15%;
+}
+
+.t-property, .t-neg{
+    margin-bottom: 20px;
+
+    width: 100%;
+}
+
+.tracker-container #tracker-intro .t-neg .col-9{
+    margin-right: 0;
+    width: 74.5%;
+
+}
+
+.tracker-container #tracker-intro .t-property .col-8{
+
+}
+
+
+.tracker-container #tracker-main{
+    margin-bottom: 70px;
+}
+
+.tracker-container #tracker-main .col-9{
+    width: 74.5%;
+    margin-right: 0;
+}
+
+.tracker-container #tracker-main .col-9 h3{
+    width: 100%;
+    text-align: center;
+    border-bottom: 7px solid #a29061;
+    padding: 25px 0;
+    margin: 0 0 25px 0;
+    font-size: 36px;
+    font-family: "ProximaLight", Arial, Helvetica, sans-serif;
+    color: #e1c481;
+    background: #00499a;
+}
+
+.tracker-container #tracker-main .col-3 ul{
+    padding-left: 0;
+    width:100%;
+    margin: 0;
+}
+
+.tracker-container #tracker-main .col-3 ul li{
+    list-style: none;
+    padding: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "ProximaReg", Arial, Helvetica, sans-serif;
+    color: #4e4e4e;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tracker-container #tracker-main .col-3 ul li:hover, .tracker-container #tracker-main .col-3 ul li.t-active {
+    background: #00346e;
+    color: #e1c481;
+}
+
+#offers-cont,  #viewings-cont,  #marketing-cont,  #profile-cont{
+    display: none;
+}
+
+
+/*****Overview******/
+
+.tracker-container #tracker-main  #overview-cont ul{
+    width: 100%;
+    margin-top: 0;
+    display: inline-block;
+    padding-left: 0;
+}
+
+.tracker-container #tracker-main  #overview-cont ul li{
+    width: 23.5%;
+    margin-right: 2%;
+    float: left;
+    list-style: none;
+    height: 134px;
+    display: inline-block;
+}
+
+.tracker-container #tracker-main  #overview-cont ul li:last-child{
+    margin-right: 0;
+}
+
+.tracker-container #tracker-main  #overview-cont ul li.t-offer{
+    background: #ffffff url(../images/icos/offers.png) no-repeat;
+    background-position: center 10px;
+}
+
+.tracker-container #tracker-main  #overview-cont ul li.t-viewings{
+    background: #ffffff url(../images/icos/viewings.png) no-repeat;
+    background-position: center 10px;
+}
+
+.tracker-container #tracker-main  #overview-cont ul li.t-details{
+    background: #ffffff url(../images/icos/views.png) no-repeat;
+    background-position: center 10px;
+}
+
+.tracker-container #tracker-main  #overview-cont ul li.t-page-v{
+    background: #ffffff url(../images/icos/details.png) no-repeat;
+    background-position: center 10px;
+}
+
+.tracker-container #tracker-main  #overview-cont  .pdf-reports ul li{
+    background: #ffffff url(../images/icos/pdf-tracker.png) no-repeat;
+    background-position: center 10px;
+}
+
+.tracker-container #tracker-main  #overview-cont ul li h4{
+    margin-top: 100px;
+    text-align:center;
+    color: #00499a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tracker-container #tracker-main  #overview-cont h5{
+    color: #00499a;
+    font-size: 26px;
+    margin: 30px 30px 10px;
+    display: inline-block;
+}
+
+.tracker-container #tracker-main  #overview-cont p{
+    margin: 0 30px 25px;
+}
+
+
+/*****Offers******/
+
+#offers-cont .col-12 table{
+      width: 100%; 
+      border-collapse: collapse; 
+}
+
+#offers-cont .col-12 table tr{
+    border-bottom:1px solid #cccccc;
+} 
+
+#offers-cont .col-12 table tr:last-child{
+    border-bottom:none;
+}
+
+#offers-cont .col-12 table td{
+    padding: 2.5% 2%; 
+}
+
+#offers-cont .col-12 table tr#sale-tracker{
+    display: none;
+}
+
+#offers-cont .col-12 table button{
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: #00499a;
+    text-transform: none;
+    background: #e3c37b;
+}
+
+
+/*****Viewings******/
+
+#viewings-cont img{
+    width: 100%;
+    display: block;
+}
+
+#viewings-cont .col-12 table{
+      width: 100%; 
+      border-collapse: collapse; 
+}
+
+#viewings-cont .col-12 table tr{
+    border-bottom:1px solid #cccccc;
+} 
+
+#viewings-cont .col-12 table tr:first-child{
+     border-top:1px solid #cccccc;
+}
+
+#viewings-cont .col-12 table tr:last-child{
+    border-bottom:none;
+}
+
+#viewings-cont .col-12 table td{
+    width: 33%;
+    padding: 2.5% 3.5%;
+      
+}
+
+#viewings-cont .col-12 h4{
+    color: #00499a;
+    font-family: "ProximaBold", Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    margin: 30px 30px 25px;
+    display: inline-block;
+}
+
+
+/******Marketing*******/
+
+#marketing-cont #sum-table{
+    padding-bottom: 25px;
+}
+
+#marketing-cont #sum-table ul li{
+    margin-bottom: 10px;
+}
+
+#marketing-cont #sum-table h4, #marketing-cont #interest h4{
+    color: #00499a;
+    font-family: "ProximaBold", Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    margin: 30px 30px 10px;
+    display: inline-block;
+}
+
+#marketing-cont #sum-table .blue{
+    font-weight: bold;
+}
+
+#marketing-cont #interest{
+    margin-top: 20px;
+}
+
+#marketing-cont #interest .col-12{
+    margin: 0 0 20px 0;
+}
+
+#marketing-cont #interest p{
+    margin: 0 30px 25px;
+}
+
+#marketing-cont #interest img{
+    width: 100%;
+}
+
+#marketing-cont #interest label, #marketing-cont #interest form select{
+    margin-left: 10%;
+    width: 90%;
+    display: block;
+}
+
+ #marketing-cont #interest form select{
+    padding: 10px;
+ }
+
+#marketing-cont #interest input[type=submit]{
+    margin-top: 30px;
+    padding: 10px 45px;
+}
+
+#marketing-cont #interest label{
+    color: #00499a;
+    font-family: "ProximaBold", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}

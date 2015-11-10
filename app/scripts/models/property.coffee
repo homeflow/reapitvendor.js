@@ -4,16 +4,18 @@ class ReapitVendor.Models.Property extends Backbone.Model
       deffered = new jQuery.Deferred()
       xmlDoc = $($.parseXML( xml ))
       console.log(@parseFragment(xmlDoc.find('Property')))
-      post_processing_steps = @postProcess(new ReapitVendor.Models.Property(@parseFragment(xmlDoc.find('Property'))))
-      $.when(post_processing_steps...).done ->
-        deffered.resolve()
-      deffered
+      model = new ReapitVendor.Models.Property(@parseFragment(xmlDoc.find('Property')))
+      post_processing_steps = [@postProcess(model)]
+      $.when(post_processing_steps...).done =>
+        deffered.resolve(model)
+      deffered.done ->
+      deffered.promise()
 
 
     @postProcess:(model)->
       promises = []
       ReapitVendor.Models.Auth.getInstance().negotiator(model.get('negotiator').id).done (neg) =>
-        model.set(negotiator, neg)
+        model.set('negotiator', neg)
 
 
     @parseFragment:(xmlDoc) ->
