@@ -58,6 +58,22 @@ window.ReapitVendor =
       promise.resolve(_vendor_view)
     return promise
 
+  getPropertyUserInteractions: ->
+    if @_property_user_interactions?
+      promise = new jQuery.Deferred()
+      promise.resolve(@_property_user_interactions)
+      return promise
+    @auth.property_user_interactions().done (property_user_interactions) =>
+      console.log(property_user_interactions.toJSON())
+      @_property_user_interactions = property_user_interactions
+
+  getPropertyUserInteractionsView: ->
+    promise = new jQuery.Deferred()
+    @getPropertyUserInteractions().done (property_user_interactions) =>
+      _property_user_interactions_view = new ReapitVendor.Views.PropertyUserInteractions(collection: property_user_interactions)
+      promise.resolve(_property_user_interactions_view)
+    return promise
+
   getVendor: ->
     promise = new jQuery.Deferred()
     if @_vendor?

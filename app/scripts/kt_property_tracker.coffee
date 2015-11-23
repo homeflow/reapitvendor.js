@@ -18,6 +18,12 @@ $ ->
         stats_view.setElement '#marketing-tab'
         stats_view.render()
 
+    interactions: ->
+      window.reapit_vendor.getPropertyUserInteractionsView().done (property_user_interactions_view) ->
+        stats_view.setTemplate '#property-user-interactions-template'
+        stats_view.setElement '#property-user-interactions'
+        stats_view.render()
+
     profile: ->
   }
 
@@ -31,6 +37,7 @@ $ ->
     el = $(event.target)
     container = el.attr('id').replace('-btn', '-cont')
     el.addClass('t-active')
+    console.log(el.attr('id').replace('-btn', ''))
     actions[el.attr('id').replace('-btn', '')].call()
     $('#' + container).show()
 
@@ -55,8 +62,6 @@ $ ->
       stats_view.setTemplate '#marketing-stats-template'
       stats_view.setElement '#marketing-stats'
       stats_view.render()
-
-
 
   $('#tracker-login form').submit (event) ->
 

@@ -80,6 +80,29 @@ class ReapitVendor.Models.Auth extends Singleton
 
     defferedRequest.promise()
 
+  property_user_interactions: ->
+    defferedRequest = new jQuery.Deferred()
+    @login().done =>
+      $.soap
+        url: @root_url
+        method: "GetPropertyUserInteractionData"
+        SOAPHeader: {
+          'SessionID': @session_id
+        }
+        noPrefix: true
+        data: {
+          'ID': @property_id
+          'AccessToken': @token,
+          'Type': "PropertyUserInteraction",
+          'Split': "PropertyUserInteractionDataSplit",
+          'From': "2000-01-01-01:00",
+          'To': "2015-11-22-00:01"
+        }
+        success: (soapResponse) =>
+          xml = soapResponse.toString()
+          defferedRequest.resolve ReapitVendor.Collections.Viewings.newFromXML(xml)
+
+    defferedRequest.promise()
 
   offers: ->
     defferedRequest = new jQuery.Deferred()
