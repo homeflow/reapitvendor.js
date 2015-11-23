@@ -8,14 +8,14 @@
 
 
 
-/************************** 
-    ************************** 
-        ************************** 
+/**************************
+    **************************
+        **************************
 
-    PROPERTY TRACKER STYLES 
+    PROPERTY TRACKER STYLES
 
-        ************************** 
-    ************************** 
+        **************************
+    **************************
 *****************************/
 
 #tracker-body{
@@ -44,10 +44,10 @@
 
 .tracker-container #tracker-intro{
     margin-bottom: 50px;
-    display: -webkit-box;  
-    display: -ms-flexbox;  
-    display: -webkit-flex; 
-    display: flex;        
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
 }
 
 
@@ -71,7 +71,7 @@
     width: 49%;
     margin-right: 2%;
     padding-bottom: 20px;
-       
+
 
 
 }
@@ -160,7 +160,7 @@
     color: #e1c481;
 }
 
-#offers-cont,  #viewings-cont,  #marketing-cont,  #profile-cont{
+#offers-cont,  #viewings-cont,  #marketing-cont,  #profile-cont, #interactions-cont{
     display: none;
 }
 
@@ -235,20 +235,20 @@
 /*****Offers******/
 
 #offers-cont .col-12 table{
-      width: 100%; 
-      border-collapse: collapse; 
+      width: 100%;
+      border-collapse: collapse;
 }
 
 #offers-cont .col-12 table tr{
     border-bottom:1px solid #cccccc;
-} 
+}
 
 #offers-cont .col-12 table tr:last-child{
     border-bottom:none;
 }
 
 #offers-cont .col-12 table td{
-    padding: 2.5% 2%; 
+    padding: 2.5% 2%;
 }
 
 #offers-cont .col-12 table tr#sale-tracker{
@@ -272,13 +272,13 @@
 }
 
 #viewings-cont .col-12 table{
-      width: 100%; 
-      border-collapse: collapse; 
+      width: 100%;
+      border-collapse: collapse;
 }
 
 #viewings-cont .col-12 table tr{
     border-bottom:1px solid #cccccc;
-} 
+}
 
 #viewings-cont .col-12 table tr:first-child{
      border-top:1px solid #cccccc;
@@ -291,7 +291,7 @@
 #viewings-cont .col-12 table td{
     width: 33%;
     padding: 2.5% 3.5%;
-      
+
 }
 
 #viewings-cont .col-12 h4{

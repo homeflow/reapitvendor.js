@@ -52,14 +52,17 @@
     <script src="/scripts/models/property.js"></script>
     <script src="/scripts/models/viewing.js"></script>
     <script src="/scripts/models/marketing_stats.js"></script>
+    <script src="/scripts/models/property_user_interaction.js"></script>
     <script src="/scripts/views/marketing_stats.js"></script>
     <script src="/scripts/views/property.js"></script>
     <script src="/scripts/views/office.js"></script>
     <script src="/scripts/views/vendor.js"></script>
     <script src="/scripts/views/viewings.js"></script>
+    <script src="/scripts/views/property_user_interactions.js"></script>
     <script src="/scripts/collections/negotiators.js"></script>
     <script src="/scripts/collections/offices.js"></script>
     <script src="/scripts/collections/viewings.js"></script>
+    <script src="/scripts/collections/property_user_interactions.js"></script>
     <script src="/scripts/models/auth.js"></script>
     <!-- endbuild -->
 
@@ -221,6 +224,18 @@
         <li><span class="blue">{{marketing_stats.detailssent}} buyers sent details</span> of property</li>
         <li><span class="blue">Property has had {{marketing_stats.viewings}} viewings</span></li>
         <li>Property viewed <span class="blue">{{marketing_stats.pageviews}} times</span> on our website (by {{marketing_stats.uniquepageviews}} different people)</li>
+      </ul>
+
+  </div>
+</script>
+
+
+<script id='property-user-interactions-template' type='text/liquid'>
+  <div id="sum-table" class="col-12 white-bg">
+      <h4>Interaction Summary</h4>
+
+      <ul>
+
       </ul>
 
   </div>
@@ -421,10 +436,19 @@
 
                     </div>
 
-                  </div><!-- ##END - Marketing Container -->
+
+                    <!-- Marketing Container -->
+                      <div id="interactions-cont">
+                        <h3>Interactions</h3>
+                        <div id='property-user-interactions-tab'></div>
+
+
+                        </div>
 
 
 
+
+                  </div>
 
 
                 <!-- Profile Container -->

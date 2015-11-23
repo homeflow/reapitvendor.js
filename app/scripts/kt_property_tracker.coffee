@@ -20,9 +20,9 @@ $ ->
 
     interactions: ->
       window.reapit_vendor.getPropertyUserInteractionsView().done (property_user_interactions_view) ->
-        stats_view.setTemplate '#property-user-interactions-template'
-        stats_view.setElement '#property-user-interactions'
-        stats_view.render()
+        property_user_interactions_view.setTemplate '#property-user-interactions-template'
+        property_user_interactions_view.setElement '#property-user-interactions-tab'
+        property_user_interactions_view.render()
 
     profile: ->
   }
